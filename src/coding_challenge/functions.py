@@ -3,6 +3,10 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 
 
+class NotEnoughSubstringsError(Exception):
+    """Exception raised when not enough non-overlapping substrings can be found."""
+
+
 @dataclass
 class Substring:
     text: str
@@ -70,7 +74,7 @@ def find_largest_substrings(
         if len(largest_substrings) >= num_largest_substrings:
             return largest_substrings
 
-    raise RuntimeError(
+    raise NotEnoughSubstringsError(
         f"Cannot find {num_largest_substrings} non-overlapping substrings. "
         f"Only found {len(largest_substrings)} non-overlapping substrings."
     )

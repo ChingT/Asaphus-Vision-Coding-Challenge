@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from coding_challenge.functions import run
+from coding_challenge.functions import run, NotEnoughSubstringsError
 
 
 @pytest.mark.parametrize(
@@ -18,3 +18,17 @@ def test_run(input_file_path, substring_len, num_largest_substrings, expected):
     run(input_file_path, output_file_path, substring_len, num_largest_substrings)
     assert filecmp.cmp(output_file_path, expected)
     os.remove(output_file_path)
+
+
+@pytest.mark.parametrize(
+    "input_file_path,substring_len,num_largest_substrings",
+    [("tests/data/input_3.txt", 5, 4)],
+)
+def test_run_not_pass(input_file_path, substring_len, num_largest_substrings):
+    output_file_path = "temp.txt"
+    with pytest.raises(NotEnoughSubstringsError) as err:
+        run(input_file_path, output_file_path, substring_len, num_largest_substrings)
+
+    assert f"Cannot find {num_largest_substrings} non-overlapping substrings. " in str(
+        err.value
+    )

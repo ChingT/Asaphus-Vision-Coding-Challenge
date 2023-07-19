@@ -21,7 +21,7 @@ from coding_challenge.functions import run
     default=4,
     show_default=True,
     help="The number of lexicographically largest substrings to be found, should be "
-         "at least 1.",
+    "at least 1.",
 )
 def main_cli(input_file_path, output_file_path, substring_len, num_largest_substrings):
     run(input_file_path, output_file_path, substring_len, num_largest_substrings)

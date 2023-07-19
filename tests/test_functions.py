@@ -7,6 +7,7 @@ from coding_challenge.functions import (
     replace_substrings_with_underscores,
     compute_area,
     compute_perimeter,
+    NotEnoughSubstringsError,
 )
 
 
@@ -60,7 +61,7 @@ def test_find_alphanumeric_substrings(test_lines, substring_len, expected):
 
 
 @pytest.mark.parametrize(
-    "substrings,num_substrings,expected",
+    "substrings,num_largest_substrings,expected",
     [
         (
             [Substring("Hello", 0, 0), Substring("World", 0, 7)],
@@ -74,17 +75,21 @@ def test_find_alphanumeric_substrings(test_lines, substring_len, expected):
         ),
     ],
 )
-def test_find_largest_substrings(substrings, num_substrings, expected):
-    assert find_largest_substrings(substrings, num_substrings) == expected
+def test_find_largest_substrings(substrings, num_largest_substrings, expected):
+    assert find_largest_substrings(substrings, num_largest_substrings) == expected
 
 
 @pytest.mark.parametrize(
-    "substrings,num_substrings",
+    "substrings,num_largest_substrings",
     [([Substring("aA12", 1, 0), Substring("A123", 1, 1), Substring("1234", 1, 2)], 2)],
 )
-def test_find_largest_substrings_not_enough(substrings, num_substrings):
-    with pytest.raises(RuntimeError):
-        find_largest_substrings(substrings, num_substrings)
+def test_find_largest_substrings_not_enough(substrings, num_largest_substrings):
+    with pytest.raises(NotEnoughSubstringsError) as err:
+        find_largest_substrings(substrings, num_largest_substrings)
+
+    assert f"Cannot find {num_largest_substrings} non-overlapping substrings. " in str(
+        err.value
+    )
 
 
 @pytest.mark.parametrize(
