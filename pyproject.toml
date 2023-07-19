@@ -1,0 +1,18 @@
+[project]
+name = "Coding-Challenge"
+version = "0.0.1"
+authors = [
+  { name="Ching-Ting Huang", email="ching.h@gmx.net" },
+]
+description = "Solution To Asaphus Vision Coding Challenge"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Topic :: Software Development"
+]
+dependencies = [
+    "click", "pytest"
+]
+
+[project.scripts]
+coding-challenge = "coding_challenge.main:main_cli"

@@ -1,0 +1,14 @@
+See also
+Collation
+Kleene–Brouwer order
+Lexicographic preferences - an application of lexicographic order in economics.
+Lexicographic optimization - an algorithmic problem of finding a lexicographically-maximal element.
+Lexicographic order topology on the unit square
+Lexicographic ordering in tensor abstract index notation
+Lexicographically minimal string rotation
+Leximin order
+Long line (topology)
+Lyndon word
+Star product, a different way of combining partial orders
+Shortlex order
+Orders on the Cartesian product of totally ordered sets
